@@ -10,6 +10,16 @@ enum CategoryType {
   tersier,
 }
 
+String getCategoryTypeString(CategoryType type) {
+  if (type == CategoryType.primer) {
+    return "Primer";
+  } else if (type == CategoryType.sekunder) {
+    return "Sekunder";
+  } else {
+    return "Tersier";
+  }
+}
+
 final List<CategoryModel> categoryList = [
   CategoryModel(
     id: uuid.v4(),

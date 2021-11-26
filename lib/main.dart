@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../screens/home_screen.dart';
+import '../routes/app_router.dart';
 import '../simple_bloc_observer.dart';
+import '../routes/custom_app_route.dart';
 import '../bloc/category/category_bloc.dart';
+import '../bloc/spending/spending_bloc.dart';
 
 void main() {
   BlocOverrides.runZoned(
@@ -25,11 +27,18 @@ class MyApp extends StatelessWidget {
                 CategoryStartedEvent(),
               ),
           ),
+          BlocProvider(
+            create: (context) => SpendingBloc()
+              ..add(
+                SpendingStartedEvent(),
+              ),
+          ),
         ],
         child: const MaterialApp(
           debugShowCheckedModeBanner: false,
           title: "Spending App",
-          home: HomeScreen(),
+          onGenerateRoute: AppRouter.onGenerateRoute,
+          initialRoute: CustomAppRoute.homeScreen,
         ));
   }
 }

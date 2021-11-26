@@ -17,7 +17,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     emit(CategoryLoadingState());
 
     try {
-      await Future.delayed(const Duration(seconds: 0)).whenComplete(
+      await Future.delayed(const Duration(seconds: 1)).whenComplete(
         () => emit(
           CategoryLoadedState(categories: categoryList),
         ),
